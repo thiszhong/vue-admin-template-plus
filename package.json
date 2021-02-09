@@ -1,15 +1,25 @@
 {
   "name": "vue-admin-template-plus",
   "version": "0.1.0",
-  "private": true,
+  "description": "A vue admin template with Vue 3.0 & Element Plus & axios & iconfont & permission control & lint",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "dev": "vue-cli-service serve",
+    "build:prod": "vue-cli-service build",
+    "build:stage": "vue-cli-service build --mode staging",
+    "preview": "node build/index.js --preview",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
+    "lint": "vue-cli-service lint",
+    "test:unit": "jest --clearCache && vue-cli-service test:unit",
+    "test:ci": "npm run lint && npm run test:unit"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "element-plus": "^1.0.2-beta.32",
+    "js-cookie": "^2.2.1",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "path-to-regexp": "^6.2.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -22,12 +32,20 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
-    "@vue/test-utils": "^2.0.0-0",
+    "@vue/test-utils": "^2.0.0-rc.0",
     "babel-eslint": "^10.1.0",
+    "chalk": "^4.1.0",
+    "connect": "^3.7.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0-0",
+    "html-webpack-plugin": "^5.0.0",
+    "mockjs": "^1.1.0",
+    "runjs": "^4.4.2",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "script-ext-html-webpack-plugin": "^2.1.5",
+    "svg-sprite-loader": "^5.2.1",
+    "svgo": "^1.3.2",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"
   }
