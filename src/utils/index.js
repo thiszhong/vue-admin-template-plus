@@ -1,3 +1,5 @@
+import qs from 'qs'
+
 /**
  * Parse the time to string
  * @param {(Object|string|number)} time
@@ -96,18 +98,28 @@ export function formatTime(time, option) {
  */
 export function param2Obj(url) {
   const search = decodeURIComponent(url.split('?')[1]).replace(/\+/g, ' ')
-  if (!search) {
-    return {}
-  }
-  const obj = {}
-  const searchArr = search.split('&')
-  searchArr.forEach(v => {
-    const index = v.indexOf('=')
-    if (index !== -1) {
-      const name = v.substring(0, index)
-      const val = v.substring(index + 1, v.length)
-      obj[name] = val
+  return qs.parse(search)
+}
+
+/**
+ * 连字符 转 驼峰
+ * @param {string} str 
+ * @param {boolean} pascal 帕斯卡，是否转为大驼峰，即首字母也大写
+ */
+export function camelize(str, pascal) {
+  const s = str.replace(/-(\w)/g, (_, c) => c.toUpperCase())
+  return !pascal ? s : `${s[0].toUpperCase()}${s.substring(1)}`
+}
+
+/**
+ * 驼峰 转 连字符
+ * @param {string} str
+ */
+export function kebabCase(str) {
+  return (str + '').replace(
+    /[A-Z]/g,
+    (matched) => {
+      return '-' + matched.toLowerCase()
     }
-  })
-  return obj
+  )
 }
