@@ -2,12 +2,11 @@ import { createApp } from 'vue'
 
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
-import ElementPlus from 'element-plus';
-import 'element-plus/lib/theme-chalk/index.css';
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 import '@/styles/index.scss' // global css
 
-import SvgIcon from '@/icons' // icon
 import '@/permission' // permission control
 
 import App from './App.vue'
@@ -28,5 +27,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const app = createApp(App)
-app.component('SvgIcon', SvgIcon)
 app.use(ElementPlus).use(store).use(router).mount('#app')
