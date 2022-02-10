@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
 import mixProps from './props'
 import ElIcon from './el-icon.vue'
 import CustomIcon from './custom-icon.vue'

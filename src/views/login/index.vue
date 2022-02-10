@@ -9,7 +9,7 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <svg-icon icon-class="user" />
+          <MyIcon size="18px" name="User" />
         </span>
         <el-input
           ref="username"
@@ -24,7 +24,7 @@
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <svg-icon icon-class="password" />
+          <MyIcon size="18px" name="Lock" />
         </span>
         <el-input
           :key="passwordType"
@@ -38,7 +38,7 @@
           @keyup.enter="handleLogin"
         />
         <span class="show-pwd" @click="showPwd">
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+          <MyIcon size="18px" :name="passwordType === 'password' ? 'MoreFilled' : 'View'" />
         </span>
       </el-form-item>
 
@@ -195,10 +195,9 @@ $light_gray:#eee;
   }
   .svg-container {
     padding: 6px 5px 6px 15px;
+    line-height: 1;
     color: $dark_gray;
-    vertical-align: middle;
     width: 30px;
-    display: inline-block;
   }
   .title-container {
     position: relative;
@@ -213,7 +212,8 @@ $light_gray:#eee;
   .show-pwd {
     position: absolute;
     right: 10px;
-    top: 7px;
+    // top: 7px;
+    line-height: 1;
     font-size: 16px;
     color: $dark_gray;
     cursor: pointer;

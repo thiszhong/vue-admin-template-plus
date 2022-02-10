@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed, defineEmits } from 'vue';
+import { computed } from 'vue';
 import mixProps from './props'
 
 const props = defineProps(mixProps)

@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import * as ElIcons from '@element-plus/icons-vue'
 import mixProps from './props'
 import { camelize } from '@/utils'
