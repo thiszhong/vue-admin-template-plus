@@ -8,6 +8,8 @@
 
 目前版本基于 `vue-cli + Vue 3.0 + Element Plus ` 进行构建，参考 [vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 做了简单的升级适配 `Vue 3.0` 和 `Element Plus`，所以绝大部分还是 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 的味道。
 
+**next分支适配了 Element Plus 2.0.0 正式版。**
+
 ## 相关文档
 
 [Element Plus](https://element-plus.gitee.io/#/zh-CN/component/installation) 
