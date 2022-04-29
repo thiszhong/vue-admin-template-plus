@@ -42,7 +42,7 @@
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" size="large" type="primary" style="width:100%;margin-bottom:30px;" @click.prevent="handleLogin">Login</el-button>
 
       <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
@@ -156,6 +156,11 @@ $cursor: #fff;
         -webkit-text-fill-color: $cursor !important;
       }
     }
+  }
+  .el-input__wrapper {
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
   }
   .el-form-item {
     border: 1px solid rgba(255, 255, 255, 0.1);

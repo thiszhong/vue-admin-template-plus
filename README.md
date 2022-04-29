@@ -1,5 +1,7 @@
 # vue-admin-template-plus
 
+下个版本将会有一个整体构思的变化，是个 `TypeScript` 版本，采用CSS变量控制主题等，正在 `next` 分支持续完善。
+
 > 这是一个极简的 vue admin 管理后台。它只包含了 Vue 3.0 & Element Plus & axios & iconfont & permission control & lint，这些搭建后台必要的东西。
 
 [线上地址](https://thiszhong.github.io/vue-admin-template-plus)
