@@ -1,9 +1,9 @@
 <template>
   <div v-if="!item.hidden">
-    <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
+    <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren) && !item.alwaysShow">
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
-          <item-icon :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" />
+          <MyIcon :name="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" />
           <template v-if="onlyOneChild.meta.title" #title>
             <span>{{ onlyOneChild.meta.title }}</span>
           </template>
@@ -11,9 +11,9 @@
       </app-link>
     </template>
 
-    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+    <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template v-slot:title>
-        <item-icon v-if="item.meta" :icon="item.meta && item.meta.icon" />
+        <MyIcon v-if="item.meta" :name="item.meta && item.meta.icon" />
         <span v-if="item.meta && item.meta.title">{{ item.meta.title }}</span>
       </template>
       <sidebar-item
@@ -24,21 +24,18 @@
         :base-path="resolvePath(child.path)"
         class="nest-menu"
       />
-    </el-submenu>
+    </el-sub-menu>
   </div>
 </template>
 
 <script>
 import path from 'path'
 import { isExternal } from '@/utils/validate'
-import ItemIcon from './ItemIcon'
 import AppLink from './Link'
-import FixiOSBug from './FixiOSBug'
 
 export default {
   name: 'SidebarItem',
-  components: { ItemIcon, AppLink },
-  mixins: [FixiOSBug],
+  components: { AppLink },
   props: {
     // route object
     item: {

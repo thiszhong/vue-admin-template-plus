@@ -1,13 +1,17 @@
 <template>
   <div :class="classObj" class="app-wrapper">
+
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
-    <sidebar class="sidebar-container" />
+
+    <Sidebar />
+
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
       </div>
       <app-main />
     </div>
+
   </div>
 </template>
 
@@ -34,11 +38,12 @@ export default {
       return this.$store.state.settings.fixedHeader
     },
     classObj() {
+      const { sidebar: { opened, withoutAnimation }, device } = this
       return {
-        hideSidebar: !this.sidebar.opened,
-        openSidebar: this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
+        hideSidebar: !opened,
+        openSidebar: opened,
+        withoutAnimation: withoutAnimation,
+        mobile: device === 'mobile'
       }
     }
   },
@@ -65,8 +70,7 @@ export default {
     }
   }
   .drawer-bg {
-    background: #000;
-    opacity: 0.3;
+    background: rgba(0, 0, 0, .3);
     width: 100%;
     top: 0;
     height: 100%;
