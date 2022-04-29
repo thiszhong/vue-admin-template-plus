@@ -1,106 +1,46 @@
-'use strict'
 const path = require('path')
-const defaultSettings = require('./src/settings.js')
+const { defineConfig } = require('@vue/cli-service')
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+// https://github.com/antfu/unplugin-icons
+const Icons = require('unplugin-icons/webpack')
+const IconsResolver = require('unplugin-icons/resolver')
 
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
-
-const name = defaultSettings.title || 'Vue Admin Template Plus —— Vue 3.0 & Element Plus' // page title
-
-// If your port is set to 80,
-// use administrator privileges to execute the command line.
-// For example, Mac: sudo npm run
-// You can change the port by the following methods:
-// port = 9528 npm run dev OR npm run dev --port = 9528
-const port = process.env.port || process.env.npm_config_port || 9528 // dev port
-
-// All configuration item explanations can be find in https://cli.vuejs.org/config/
-module.exports = {
-  /**
-   * You will need to set publicPath if you plan to deploy your site under a sub path,
-   * for example GitHub Pages. If you plan to deploy your site to https://foo.github.io/bar/,
-   * then publicPath should be set to "/bar/".
-   * In most cases please use '/' !!!
-   * Detail: https://cli.vuejs.org/config/#publicpath
-   */
-  publicPath: '/vue-admin-template-plus/',
-  outputDir: 'dist',
-  assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
-  productionSourceMap: false,
-  devServer: {
-    port: port,
-    open: true,
-    overlay: {
-      warnings: false,
-      errors: true
-    },
-    before: require('./mock/mock-server.js')
-  },
-  configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
-    name: name,
-    resolve: {
-      alias: {
-        '@/': resolve('src/')
-      }
-    }
-  },
-  chainWebpack(config) {
-    // it can improve the speed of the first screen, it is recommended to turn on preload
-    config.plugin('preload').tap(() => [
-      {
-        rel: 'preload',
-        // to ignore runtime.js
-        // https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/cli-service/lib/config/app.js#L171
-        fileBlacklist: [/\.map$/, /hot-update\.js$/, /runtime\..*\.js$/],
-        include: 'initial'
-      }
-    ])
-
-    // when there are many pages, it will cause too many meaningless requests
-    config.plugins.delete('prefetch')
-
-    config
-      .when(process.env.NODE_ENV !== 'development',
-        config => {
-          config
-            .plugin('ScriptExtHtmlWebpackPlugin')
-            .after('html')
-            .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
-              inline: /runtime\..*\.js$/
-            }])
-            .end()
-          config
-            .optimization.splitChunks({
-              chunks: 'all',
-              cacheGroups: {
-                libs: {
-                  name: 'chunk-libs',
-                  test: /[\\/]node_modules[\\/]/,
-                  priority: 10,
-                  chunks: 'initial' // only package third parties that are initially dependent
-                },
-                elementUI: {
-                  name: 'chunk-elementUI', // split elementUI into a single package
-                  priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
-                  test: /[\\/]node_modules[\\/]_?element-ui(.*)/ // in order to adapt to cnpm
-                },
-                commons: {
-                  name: 'chunk-commons',
-                  test: resolve('src/components'), // can customize your rules
-                  minChunks: 3, //  minimum common number
-                  priority: 5,
-                  reuseExistingChunk: true
-                }
-              }
-            })
-          // https:// webpack.js.org/configuration/optimization/#optimizationruntimechunk
-          config.optimization.runtimeChunk('single')
-        }
-      )
-  }
-}
+module.exports = defineConfig({
+	transpileDependencies: true,
+	configureWebpack: {
+		plugins: [
+			AutoImport({
+				// Generate corresponding .eslintrc-auto-import.json file - https://github.com/antfu/unplugin-auto-import
+				// eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
+				eslintrc: {
+					enabled: true,
+					filepath: path.resolve(__dirname, '.eslintrc-auto-import.json'),
+					globalsPropValue: true
+				},
+				resolvers: [
+					// 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+					ElementPlusResolver()
+				],
+				dts: path.resolve(__dirname, 'auto-imports.d.ts')
+			}),
+			Components({
+				resolvers: [
+					// 自动导入 Element Plus 组件
+					ElementPlusResolver(),
+					// 目前其实用不到自动引入，因为想使用动态图标组件，又不想全量引入
+					// 所以都有主动引入，详见components/my-icon/iconify-icon
+					IconsResolver({
+						prefix: 'iconify'
+					})
+				],
+				dts: path.resolve(__dirname, 'components.d.ts')
+			}),
+			Icons({
+				compiler: 'vue3',
+				autoInstall: true
+			})
+		]
+	}
+})

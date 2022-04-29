@@ -1,50 +1,39 @@
 {
-  "name": "vue-admin-template-plus",
-  "version": "0.1.0",
-  "description": "A vue admin template with Vue 3.0 & Element Plus & axios & iconfont & permission control & lint",
-  "scripts": {
-    "dev": "vue-cli-service serve",
-    "build:prod": "vue-cli-service build",
-    "build:stage": "vue-cli-service build --mode staging",
-    "preview": "node build/index.js --preview",
-    "lint": "vue-cli-service lint",
-    "test:unit": "jest --clearCache && vue-cli-service test:unit",
-    "test:ci": "npm run lint && npm run test:unit"
-  },
-  "dependencies": {
-    "@element-plus/icons-vue": "^0.2.7",
-    "axios": "^0.25.0",
-    "core-js": "^3.20.3",
-    "element-plus": "^2.0.1",
-    "js-cookie": "^3.0.1",
-    "normalize.css": "^8.0.1",
-    "nprogress": "^0.2.0",
-    "path-to-regexp": "^6.2.0",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/test-utils": "^2.0.0-0",
-    "@babel/eslint-parser": "^7.17.0",
-    "chalk": "^4.1.0",
-    "connect": "^3.7.0",
-    "eslint": "^7.5.0",
-    "eslint-plugin-vue": "^7.0.0",
-    "html-webpack-plugin": "^5.0.0",
-    "mockjs": "^1.1.0",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
-    "script-ext-html-webpack-plugin": "^2.1.5",
-    "tasksfile": "^5.1.1",
-    "typescript": "~3.9.3",
-    "vue-jest": "^5.0.0-0"
-  }
+	"name": "vue-admin-template-plus",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vue-cli-service serve",
+		"build": "vue-cli-service build",
+		"lint": "vue-cli-service lint"
+	},
+	"dependencies": {
+		"@vueuse/core": "^8.2.4",
+		"axios": "^0.26.1",
+		"core-js": "^3.8.3",
+		"element-plus": "^2.1.4",
+		"nprogress": "^0.2.0",
+		"vue": "^3.2.13",
+		"vue-router": "^4.0.3"
+	},
+	"devDependencies": {
+		"@iconify-json/ant-design": "^1.1.1",
+		"@types/nprogress": "^0.2.0",
+		"@typescript-eslint/eslint-plugin": "^5.4.0",
+		"@typescript-eslint/parser": "^5.4.0",
+		"@vue/cli-plugin-babel": "~5.0.0",
+		"@vue/cli-plugin-eslint": "~5.0.0",
+		"@vue/cli-plugin-router": "~5.0.0",
+		"@vue/cli-plugin-typescript": "~5.0.0",
+		"@vue/cli-service": "~5.0.0",
+		"@vue/eslint-config-typescript": "^9.1.0",
+		"eslint": "^7.32.0",
+		"eslint-plugin-vue": "^8.0.3",
+		"less": "^4.0.0",
+		"less-loader": "^8.0.0",
+		"typescript": "~4.5.5",
+		"unplugin-auto-import": "^0.6.6",
+		"unplugin-icons": "^0.14.1",
+		"unplugin-vue-components": "^0.18.4"
+	}
 }

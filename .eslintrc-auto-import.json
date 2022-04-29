@@ -1,0 +1,21 @@
+{
+  "globals": {
+    "ElAvatar": true,
+    "ElBreadcrumb": true,
+    "ElBreadcrumbItem": true,
+    "ElButton": true,
+    "ElIcon": true,
+    "ElMenu": true,
+    "ElMenuItem": true,
+    "ElMessage": true,
+    "ElMessageBox": true,
+    "ElNotification": true,
+    "ElResult": true,
+    "ElRow": true,
+    "ElScrollbar": true,
+    "ElSubMenu": true,
+    "ElTable": true,
+    "ElTableColumn": true,
+    "ElTree": true
+  }
+}

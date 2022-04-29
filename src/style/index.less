@@ -1,0 +1,64 @@
+@import url('./normalize.less');
+@import url('./css-variables.less');
+
+html {
+	box-sizing: border-box;
+
+	// element plus
+	.el-dialog {
+		margin: 0 auto;
+		top: 50%;
+		transform: translateY(-50%);
+		@media (max-width: 750px) {
+			--el-dialog-width: 90% !important;
+		}
+		&.no-header .el-dialog__header {
+			display: none;
+		}
+	}
+	.el-dialog__header {
+		padding: 15px calc(var(--el-dialog-padding-primary) + 16px) 15px var(--el-dialog-padding-primary);
+		border-bottom: 1px solid #e5e5e5;
+	}
+	.el-dialog__title {
+		font-weight: bold;
+	}
+	.el-dialog__headerbtn {
+		top: 3px;
+	}
+	.el-dialog__body {
+		padding: var(--el-dialog-padding-primary);
+		max-height: 80vh;
+		overflow: auto;
+	}
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+html,
+body {
+	height: 100%;
+}
+body {
+	font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #f0f2f5;
+}
+
+// // chrome滚动条
+// ::-webkit-scrollbar {
+// 	width: 7px;
+// }
+// // 滚动条中间滑动部分
+// ::-webkit-scrollbar-thumb {
+// 	background-color: rgba(144, 147, 153, 0.3);
+// 	border-radius: 4px;
+// }
+
+#nprogress .bar {
+	background-color: var(--primary-color);
+}
