@@ -1,0 +1,20 @@
+@use './css-var.scss' as *;
+@use './reset.css' as *;
+// import dark theme
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+
+body {
+	font-family: Inter, system-ui, Avenir, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+		'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--color-page-bg);
+}
+
+#nprogress .bar {
+	background: var(--color-primary) !important;
+}
+#nprogress .spinner-icon {
+	border-top-color: var(--color-primary) !important;
+	border-left-color: var(--color-primary) !important;
+}

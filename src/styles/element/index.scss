@@ -1,0 +1,104 @@
+// 这里配置 element-plus-ui 的主题、变量什么的，
+
+$--colors: (
+	'primary': (
+		'base': #1b5cff
+	),
+	'success': (
+		'base': #47c93a
+	),
+	'warning': (
+		'base': #ffba01
+	),
+	'danger': (
+		'base': #ff4857
+	),
+	'error': (
+		'base': #ff4857
+	)
+);
+
+// 自定义命名空间, 默认：el
+// @forward "element-plus/theme-chalk/src/mixins/config.scss" with (
+//   $namespace: "ep"
+// );
+
+// You should use them in scss, because we calculate it by sass.
+// comment next lines to use default color
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+		// do not use same name, it will override.
+		$colors: $--colors,
+		$table: ('header-bg-color': #f6f7f8, 'header-text-color': #252525),
+		$form: ('inline-content-width': 168px),
+		// $button-padding-horizontal: ('default': 50px)
+	);
+
+// if you want to import all
+// @use 'element-plus/theme-chalk/src/index.scss' as *;
+
+// You can comment it to hide debug info.
+// @debug $--colors;
+
+// custom dark variables
+@use './dark.scss';
+
+.el-button {
+	min-width: 90px;
+}
+.el-button--primary.is-plain {
+	--el-button-bg-color: transparent;
+}
+.el-table__body .el-button {
+	min-width: 0;
+}
+.el-message-box__header {
+	padding-top: 32px;
+}
+.el-message-box {
+	padding-bottom: 32px;
+}
+.el-table th.el-table__cell {
+	padding: 12px 0;
+}
+.el-table__header-wrapper {
+	border-radius: var(--el-border-radius-base) var(--el-border-radius-base) 0 0;
+}
+.el-drawer {
+	min-width: 400px;
+}
+.el-drawer__header {
+	color: var(--el-text-color-primary);
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+.el-select {
+	width: 100%;
+}
+.el-cascader {
+	width: 100%;
+}
+.el-date-editor.el-input {
+	width: 100%;
+}
+// hack：按需加载时没有加载上这个样式，可能是当前代码还没有使用到相关组件
+.el-overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2000;
+	height: 100%;
+	background-color: var(--el-overlay-color-lighter);
+	overflow: auto;
+}
+.el-dialog {
+	max-width: 1400px;
+}
+.el-dialog__title {
+	font-size: 17px;
+	font-weight: 500;
+}
+.el-image {
+	border-radius: 2px;
+}

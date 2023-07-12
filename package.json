@@ -1,0 +1,29 @@
+{
+	"name": "vue-admin-template-plus",
+	"private": true,
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "vite --host",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@tinymce/tinymce-vue": "^5.1.0",
+		"axios": "^1.4.0",
+		"element-plus": "^2.3.6",
+		"nprogress": "^0.2.0",
+		"qs": "^6.11.2",
+		"vue": "^3.3.4",
+		"vue-router": "^4.2.2"
+	},
+	"devDependencies": {
+		"@iconify/json": "^2.2.83",
+		"@vitejs/plugin-vue": "^4.2.3",
+		"rollup-plugin-visualizer": "^5.9.2",
+		"sass": "^1.63.4",
+		"unocss": "^0.53.1",
+		"unplugin-vue-components": "^0.25.1",
+		"vite": "^4.3.9"
+	},
+	"license": "MIT"
+}

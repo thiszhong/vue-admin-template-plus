@@ -1,0 +1,72 @@
+:root {
+	--color-primary: #1b5cff;
+	--color-primary-active: #4580ff;
+	--color-primary-border: #6fa1ff;
+	--color-primary-light: #e9f2ff;
+	--color-primary-gradient: #3a95ff;
+
+	// --color-page-bg: #f6f8fb;
+	--color-page-bg: #fff;
+	// --color-table-header-bg: #fafafa;
+	--color-table-header-bg: #f6f7f8;
+	--color-login-bg: #f6f8fb;
+
+	--color-white: #fff;
+	--color-black: #000;
+	--color-success: #47c93a;
+	--color-danger: #ff4857;
+	--color-warning: #ffba01;
+
+	--color-text-3: #303133;
+	--color-text-6: #606266;
+	--color-text-9: #909399;
+
+	--space: 24px;
+
+	@media (max-width: 1366px) {
+		--space: 20px;
+	}
+}
+
+// 其他主题写这里。暗黑模式在最下，当同时出现时其优先级高
+// html.theme-other {}
+
+// 暗黑模式
+html.dark {
+	// --color-primary-active: #4580ff;
+	// --color-primary-border: #6fa1ff;
+	--color-primary-light: #151b2c;
+	// --color-primary-gradient: #3a95ff;
+
+	--color-page-bg: #141414;
+	--color-table-header-bg: #1d1e1f;
+	--color-login-bg: #1d1e1f;
+
+	--color-white: #141414;
+	--color-black: #rgba(255, 255, 255, 0.8);
+	--color-text-3: #e5eaf3;
+	--color-text-6: #cfd3dc;
+	--color-text-9: #a3a6ad;
+
+	.my-layout {
+		--menu-text-color: #e5eaf3;
+		--menu-hover-text-color: var(--color-primary);
+		--menu-active-color: var(--color-primary);
+		--menu-active-bg-color: var(--color-primary-light);
+		// 一级菜单块选中时的背景
+		--menu-active-block-bg: none;
+		--header-text-color: #e5eaf3;
+		--header-hover-text-color: var(--color-primary);
+		--header-shadow: 0 1px 4px rgba(255, 234, 204, 0.08);
+		// --header-shadow: none;
+		--breadcrumb-shadow: 0 1px 4px rgba(255, 234, 204, 0.08);
+
+		&:not(.el-menu--popup-container, .el-popper) {
+			--menu-bg-color: #1d1e1f;
+		}
+	}
+	.el-table {
+		--el-table-header-text-color: #e5eaf3;
+		--el-table-header-bg-color: #1d1e1f;
+	}
+}
